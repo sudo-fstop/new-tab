@@ -1,3 +1,7 @@
+import { injectStyles } from "./style";
+import { startScheduler } from "./scheduler";
+
 export function initWidget(): void {
-  console.log("[widget] initialized");
+  injectStyles();
+  startScheduler();
 }
