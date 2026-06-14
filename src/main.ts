@@ -1,4 +1,8 @@
 import "./style.css";
+import { initWallpaper } from "./wallpaper/index";
+import { initWidget } from "./widget/index";
+import { initScreensaver } from "./screensaver/index";
 
-const app = document.querySelector<HTMLDivElement>("#app")!;
-app.innerHTML = `<p>New Tab</p>`;
+initWallpaper();
+initWidget();
+initScreensaver();
