@@ -5,6 +5,7 @@ import { initGreeting } from "./greeting/index";
 import { initSearch } from "./search/index";
 import { initQuickLinks } from "./quicklinks/index";
 import { initTodo } from "./todo/index";
+import { initPomodoro } from "./pomodoro/index";
 import { initScreensaver } from "./screensaver/index";
 
 initWallpaper();
@@ -13,4 +14,5 @@ initGreeting();
 initSearch();
 initQuickLinks();
 initTodo();
+initPomodoro();
 initScreensaver();
