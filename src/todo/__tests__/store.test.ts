@@ -1,10 +1,33 @@
-import { describe, it, expect, beforeEach } from "vitest";
+import { describe, it, expect, beforeEach, vi } from "vitest";
 import { loadTodos, saveTodos, addTodo, toggleTodo, deleteTodo } from "../store";
 import type { Todo } from "../store";
 
+function createLocalStorageMock(): Storage {
+  let store: Record<string, string> = {};
+  return {
+    getItem: (key: string) => store[key] ?? null,
+    setItem: (key: string, value: string) => {
+      store[key] = value;
+    },
+    removeItem: (key: string) => {
+      delete store[key];
+    },
+    clear: () => {
+      store = {};
+    },
+    get length() {
+      return Object.keys(store).length;
+    },
+    key: (index: number) => Object.keys(store)[index] ?? null,
+  };
+}
+
 describe("store", () => {
+  let mockStorage: Storage;
+
   beforeEach(() => {
-    localStorage.clear();
+    mockStorage = createLocalStorageMock();
+    vi.stubGlobal("localStorage", mockStorage);
   });
 
   describe("loadTodos", () => {
@@ -16,12 +39,12 @@ describe("store", () => {
       const todos: Todo[] = [
         { id: "abc", text: "Test", completed: false },
       ];
-      localStorage.setItem("todos", JSON.stringify(todos));
+      mockStorage.setItem("todos", JSON.stringify(todos));
       expect(loadTodos()).toEqual(todos);
     });
 
     it("returns empty array on malformed JSON", () => {
-      localStorage.setItem("todos", "not valid json{{{");
+      mockStorage.setItem("todos", "not valid json{{{");
       expect(loadTodos()).toEqual([]);
     });
   });
@@ -30,7 +53,7 @@ describe("store", () => {
     it("writes JSON to localStorage under todos key", () => {
       const todos: Todo[] = [{ id: "a", text: "Hello", completed: true }];
       saveTodos(todos);
-      expect(localStorage.getItem("todos")).toBe(JSON.stringify(todos));
+      expect(JSON.parse(mockStorage.getItem("todos")!)).toEqual(todos);
     });
   });
 
