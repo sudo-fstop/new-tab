@@ -7,6 +7,7 @@ import { initQuickLinks } from "./quicklinks/index";
 import { initTodo } from "./todo/index";
 import { initPomodoro } from "./pomodoro/index";
 import { initScreensaver } from "./screensaver/index";
+import { initWeather } from "./weather/index";
 
 initWallpaper();
 initWidget();
@@ -15,4 +16,5 @@ initSearch();
 initQuickLinks();
 initTodo();
 initPomodoro();
+initWeather();
 initScreensaver();
