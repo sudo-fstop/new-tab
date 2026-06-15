@@ -9,7 +9,7 @@ export function injectStyles(): void {
 .todo-widget {
   position: absolute;
   bottom: 40px;
-  left: 24px;
+  right: 24px;
   width: min(320px, 85vw);
   background: rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(10px);
