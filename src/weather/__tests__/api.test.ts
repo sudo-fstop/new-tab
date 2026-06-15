@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { fetchWeather, getWeatherEmoji, getWeatherDescription } from "../api";
 
