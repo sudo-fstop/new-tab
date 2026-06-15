@@ -3,6 +3,7 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   root: ".",
+  base: "/new-tab/",
   build: {
     outDir: "dist",
   },
