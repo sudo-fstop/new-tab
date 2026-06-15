@@ -1,4 +1,3 @@
-// @ts-expect-error — CSS import handled by Vite, not visible to tsc
 import "./style.css";
 import { initWallpaper } from "./wallpaper/index";
 import { initWidget } from "./widget/index";
