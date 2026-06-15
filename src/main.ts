@@ -8,6 +8,7 @@ import { initTodo } from "./todo/index";
 import { initPomodoro } from "./pomodoro/index";
 import { initScreensaver } from "./screensaver/index";
 import { initWeather } from "./weather/index";
+import { initShortcuts } from "./shortcuts/index";
 
 initWallpaper();
 initWidget();
@@ -18,3 +19,4 @@ initTodo();
 initPomodoro();
 initWeather();
 initScreensaver();
+initShortcuts();
